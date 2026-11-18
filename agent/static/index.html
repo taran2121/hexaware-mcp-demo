@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tracker agent · MCP demo</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">MCP</div>
+    <div>
+      <h1>Tracker agent</h1>
+      <p class="sub">Custom agent · LLM + MCP client · two local MCP servers</p>
+    </div>
+  </div>
+  <div class="controls">
+    <label class="ctl">Brain
+      <select id="brain"></select>
+    </label>
+    <label class="ctl">Agent role
+      <select id="role">
+        <option value="delivery_manager">Delivery manager · writes need approval</option>
+        <option value="tracker_agent">Tracker agent · read-only, no writes</option>
+      </select>
+    </label>
+    <button class="btn ghost" id="btn-injection" title="Slide 77: add an action whose title contains an instruction">Plant injection</button>
+    <button class="btn ghost" id="btn-reset" title="Reset actions, inbox and reports to the rehearsed state">Reset demo</button>
+    <a class="btn" href="/reports/tracker.html" target="_blank" id="btn-dashboard">Open dashboard ↗</a>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- LEFT: what the agent is connected to -->
+  <aside class="panel left">
+    <section>
+      <div class="section-head"><h2>Clients</h2><span class="hint">via tracker__client_status</span></div>
+      <div id="clients" class="clients"><div class="empty">Loading…</div></div>
+    </section>
+    <section>
+      <div class="section-head"><h2>MCP servers</h2><span class="hint">one client each</span></div>
+      <div id="servers"></div>
+    </section>
+    <section class="legend">
+      <div><span class="chip ro">read</span> auto-approved (readOnlyHint)</div>
+      <div><span class="chip rw">write</span> waits for your click</div>
+    </section>
+  </aside>
+
+  <!-- CENTER: the chat -->
+  <section class="panel chat">
+    <div id="messages" class="messages">
+      <div class="welcome">
+        <h2>Ask the agent something that needs tools</h2>
+        <p>It plans, calls tools through the MCP client, reads the results and repeats. <b>Think → Act → Observe.</b></p>
+        <div class="suggestions" id="suggestions"></div>
+      </div>
+    </div>
+    <form id="composer" class="composer">
+      <textarea id="input" rows="2" placeholder="e.g. Which client needs me most this week?"></textarea>
+      <div class="composer-actions">
+        <button type="button" class="btn ghost small" id="btn-prompt" title="Fetch the weekly_status prompt from the tracker server (prompts/get)">/weekly_status</button>
+        <button class="btn primary" id="send" type="submit">Send</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- RIGHT: look inside -->
+  <aside class="panel right">
+    <nav class="tabs">
+      <button data-tab="wire" class="active">On the wire</button>
+      <button data-tab="inspector">Inspector</button>
+      <button data-tab="files">Files</button>
+    </nav>
+    <div class="tab active" id="tab-wire">
+      <p class="hint pad">Every JSON-RPC request the MCP clients sent, and what came back.</p>
+      <div id="wire" class="wire"></div>
+    </div>
+    <div class="tab" id="tab-inspector">
+      <p class="hint pad">Call a server directly, with no model involved (Lab 02).</p>
+      <div class="pad">
+        <label class="field">Tool
+          <select id="insp-tool"></select>
+        </label>
+        <pre id="insp-desc" class="desc"></pre>
+        <label class="field">Arguments (JSON)
+          <textarea id="insp-args" rows="6" spellcheck="false">{}</textarea>
+        </label>
+        <button class="btn primary small" id="insp-run">tools/call</button>
+        <pre id="insp-out" class="out"></pre>
+        <h3>Resources</h3>
+        <div id="insp-resources" class="res-list"></div>
+        <pre id="res-out" class="out"></pre>
+      </div>
+    </div>
+    <div class="tab" id="tab-files">
+      <div class="pad">
+        <h3>reports/</h3><ul id="files-reports" class="files"></ul>
+        <h3>inbox/</h3><ul id="files-inbox" class="files"></ul>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<div id="toast" class="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

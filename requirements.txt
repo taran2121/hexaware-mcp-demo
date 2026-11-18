@@ -1,0 +1,4 @@
+mcp>=2,<3
+anthropic>=2
+fastapi
+uvicorn[standard]

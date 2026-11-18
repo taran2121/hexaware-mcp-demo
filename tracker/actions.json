@@ -1,0 +1,79 @@
+[
+  {
+    "id": "ACT-001",
+    "client": "Northwind",
+    "title": "Send revised SOW",
+    "owner": "Priya",
+    "due": "2026-11-15",
+    "priority": "high",
+    "status": "open",
+    "created": "2026-11-18T08:20:49",
+    "notes": []
+  },
+  {
+    "id": "ACT-002",
+    "client": "Northwind",
+    "title": "Share data migration plan",
+    "owner": "Arjun",
+    "due": "2026-11-22",
+    "priority": "medium",
+    "status": "open",
+    "created": "2026-11-18T08:20:49",
+    "notes": []
+  },
+  {
+    "id": "ACT-003",
+    "client": "Northwind",
+    "title": "Book steering committee slot",
+    "owner": "Meera",
+    "due": "2026-11-08",
+    "priority": "low",
+    "status": "done",
+    "created": "2026-11-18T08:20:49",
+    "notes": []
+  },
+  {
+    "id": "ACT-004",
+    "client": "Contoso",
+    "title": "Confirm UAT environment access",
+    "owner": "Rahul",
+    "due": "2026-11-16",
+    "priority": "medium",
+    "status": "open",
+    "created": "2026-11-18T08:20:49",
+    "notes": []
+  },
+  {
+    "id": "ACT-005",
+    "client": "Contoso",
+    "title": "Send training schedule",
+    "owner": "Priya",
+    "due": "2026-11-27",
+    "priority": "low",
+    "status": "in_progress",
+    "created": "2026-11-18T08:20:49",
+    "notes": []
+  },
+  {
+    "id": "ACT-006",
+    "client": "Fabrikam",
+    "title": "Review integration test results",
+    "owner": "Arjun",
+    "due": "2026-11-20",
+    "priority": "high",
+    "status": "open",
+    "created": "2026-11-18T08:20:49",
+    "notes": []
+  },
+  {
+    "id": "ACT-007",
+    "client": "Fabrikam",
+    "title": "Circulate release notes",
+    "owner": "Meera",
+    "due": "2026-11-30",
+    "priority": "medium",
+    "status": "open",
+    "created": "2026-11-18T08:20:49",
+    "notes": []
+  }
+]

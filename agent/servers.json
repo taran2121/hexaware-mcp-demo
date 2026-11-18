@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "tracker": {
+      "command": "${PY}",
+      "args": [
+        "${LAB}/tracker/server.py"
+      ],
+      "env": {
+        "TRACKER_DATA": "${LAB}/tracker/actions.json",
+        "LOG_LEVEL": "INFO"
+      }
+    },
+    "files": {
+      "command": "${PY}",
+      "args": [
+        "${LAB}/files_server/server.py"
+      ],
+      "env": {
+        "FILES_ROOT": "${LAB}",
+        "FILES_WRITABLE": "reports,inbox"
+      }
+    },
+    "atlassian": {
+      "type": "http",
+      "url": "https://mcp.atlassian.com/v2/mcp",
+      "auth": "oauth",
+      "allowTools": [
+        "getAccessibleAtlassianResources",
+        "searchJiraIssuesUsingJql",
+        "getJiraIssue",
+        "createJiraIssue",
+        "addOrEditJiraIssueComment"
+      ],
+      "readOnlyTools": [
+        "getAccessibleAtlassianResources",
+        "searchJiraIssuesUsingJql",
+        "getJiraIssue"
+      ]
+    }
+  }
+}

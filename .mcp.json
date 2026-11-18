@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "tracker": {
+      "command": ".venv/bin/python",
+      "args": ["tracker/server.py"],
+      "env": {
+        "TRACKER_DATA": "tracker/actions.json",
+        "LOG_LEVEL": "INFO"
+      }
+    },
+    "files": {
+      "command": ".venv/bin/python",
+      "args": ["files_server/server.py"]
+    }
+  }
+}
